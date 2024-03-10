@@ -1,0 +1,19 @@
+{ pkgs, config, lib, ... }:
+{
+  imports = [
+    ../home.nix
+    ./hardware-configuration.nix
+  ];
+
+  modules = {
+    desktop = {
+      hyprland.enable = true;
+      browsers = {
+        default = "brave";
+        brave.enable = true;
+      };
+    };
+  };
+
+  networking.networkmanager.enable = true;
+}
