@@ -2,8 +2,10 @@ import XMonad
 
 import XMonad.Hooks.EwmhDesktops
 
+import XMonad.Util.NamedActions
+
 import Keys (keybindings, showKeybindings)
-import Layouts (layoutHook)
+import Layouts (configLayoutHook)
 import Constants
 
 
@@ -12,6 +14,6 @@ main = do
   terminal <- configEnvTerminal
   xmonad $ addDescrKeys' ((mod4Mask .|. shiftMask, xK_h), showKeybindings) keybindings $ ewmh $ def
     { modMask = configModMask
-    , layoutHook = layoutHook
-    , terminal = configEnvTerminal
+    , layoutHook = configLayoutHook
+    , terminal = terminal 
     }

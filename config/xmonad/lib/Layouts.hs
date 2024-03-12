@@ -44,24 +44,24 @@ setSpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 -- mySpacing n sets the gap size around the windows.
 tall     = renamed [Replace "tall"]
            $ limitWindows 5
-           $ smartBorders
+           -- $ smartBorders
            $ windowNavigation
            -- $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ setWindowsSpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
 monocle  = renamed [Replace "monocle"]
-           $ smartBorders Simplest
-           $ windowNavigation
+           -- $ smartBorders
+           -- $ windowNavigation
            -- $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ Full
 floats   = renamed [Replace "floats"]
-           $ smartBorders
+           -- $ smartBorders
            $ simplestFloat
 grid     = renamed [Replace "grid"]
            $ limitWindows 9
-           $ smartBorders
+           -- $ smartBorders
            $ windowNavigation
            -- $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
@@ -70,14 +70,14 @@ grid     = renamed [Replace "grid"]
            $ Grid (16/10)
 
 
-layoutHook = avoidStruts
+configLayoutHook = avoidStruts
                $ mouseResize
                $ windowArrange
                $ T.toggleLayouts floats
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
   where
     myDefaultLayout = withBorder configBorderWidth tall
-                                          -- ||| noBorders monocle
+                                           ||| noBorders monocle
                                           -- ||| floats
                                           -- ||| noBorders tabs
                                            ||| grid
