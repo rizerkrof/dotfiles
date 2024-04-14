@@ -20,6 +20,7 @@
         brave.enable = true;
       };
     };
+    theme.active = "dark";
   };
 
   networking.networkmanager.enable = true;
