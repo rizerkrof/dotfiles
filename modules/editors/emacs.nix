@@ -47,5 +47,12 @@ in {
       jetbrains-mono
       ubuntu_font_family
     ];
+
+    home.configFile = {
+      "emacs" = {
+         source = "${configDir}/emacs";
+         recursive = true;
+      };
+    };
   };
 }
