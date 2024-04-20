@@ -3,6 +3,8 @@
 (scroll-bar-mode -1)
 
 (global-display-line-numbers-mode 1)
+(setq display-line-numbers 'relative)
+
 (global-visual-line-mode t)
 
 (defun doudou/inhibit-startup-screen-always ()
