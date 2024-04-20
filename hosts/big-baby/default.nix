@@ -20,6 +20,9 @@
         brave.enable = true;
       };
     };
+    editors = {
+      emacs.enable = true;
+    };
     theme.active = "dark";
   };
 
