@@ -20,6 +20,9 @@
         brave.enable = true;
       };
     };
+    shell = {
+      fish.enable = true;
+    };
     editors = {
       emacs.enable = true;
     };
