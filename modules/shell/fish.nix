@@ -20,6 +20,7 @@ in {
       fish
       bat
       eza
+      zoxide
       fd
       fzf
       jq

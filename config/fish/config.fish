@@ -15,3 +15,7 @@ end
 if type -q bat
    alias cat 'bat'
 end
+
+if command -q zoxide
+   zoxide init fish --cmd cd | source
+end
