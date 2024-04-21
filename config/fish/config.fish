@@ -19,3 +19,7 @@ end
 if command -q zoxide
    zoxide init fish --cmd cd | source
 end
+
+if command -q kitten
+   alias icat 'kitten icat'
+end
