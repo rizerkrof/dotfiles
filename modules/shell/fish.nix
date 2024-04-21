@@ -11,7 +11,7 @@ in {
 
   config = mkIf cfg.enable {
     users.defaultUserShell = pkgs.fish;
-    
+
     programs.fish = {
       enable = true;
     };
@@ -26,5 +26,12 @@ in {
       ripgrep
       tldr
     ];
+
+    home.configFile = {
+      "fish" = {
+        source = "${configDir}/fish";
+        recursive = true;
+      };
+    };
   };
 }
