@@ -1,5 +1,3 @@
-# modules/themes/alucard/default.nix --- a regal dracula-inspired theme
-
 { options, config, lib, pkgs, ... }:
 
 with lib;
@@ -15,5 +13,20 @@ in {
         };
       };
     }
+
+
+    # Desktop X11 theming
+    (mkIf config.services.xserver.enable {
+      # Compositor
+      services.picom = {
+        settings = {
+          blur = { 
+          method = "gaussian";
+          size = 50;
+          deviation = 30.0;
+          };
+        };
+      };
+    })
   ]);
 }
