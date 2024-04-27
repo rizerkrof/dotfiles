@@ -10,10 +10,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver.enable = true;
-    services.xserver.windowManager.xmonad = {
-       enable = true;
-       enableContribAndExtras = true;
+    services = {
+      picom.enable = true;
+      xserver = {
+        enable = true;
+        windowManager.xmonad = {
+          enable = true;
+          enableContribAndExtras = true;
+        };
+      };
     };
 
     home.configFile = {
