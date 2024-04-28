@@ -12,5 +12,11 @@ in {
     user.packages = with pkgs; [
       kitty
     ];
+
+    home.configFile = {
+      "kitty/kitty.conf".text = ''
+        globinclude kitty.d/**/*.conf
+      '';
+    };
   };
 }
