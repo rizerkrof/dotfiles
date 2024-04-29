@@ -1,3 +1,5 @@
+set -U fish_greeting
+
 alias .. 'cd ..'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
