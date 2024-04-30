@@ -37,9 +37,9 @@ in {
       silver        = mkOpt str "#BBBBBB"; # 7
       grey          = mkOpt str "#888888"; # 8
       brightred     = mkOpt str "#FF8888"; # 9
-      brightgreen   = mkOpt str "#00FF80"; # 10
+      brightgreen   = mkOpt str "#88FF88"; # 10
       brightyellow  = mkOpt str "#FFFF88"; # 11
-      brightblue    = mkOpt str "#0088FF"; # 12
+      brightblue    = mkOpt str "#8888FF"; # 12
       brightmagenta = mkOpt str "#FF88FF"; # 13
       brightcyan    = mkOpt str "#88FFFF"; # 14
       white         = mkOpt str "#FFFFFF"; # 15
