@@ -8,12 +8,13 @@
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";  # for packages on the edge
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, ... }:
   let
-    inherit (lib.my) mapModules mapModulesRec mapHosts;
-
     system = "x86_64-linux";
 
     mkPkgs = pkgs: extraOverlays: import pkgs {
@@ -24,6 +25,8 @@
     pkgs' = mkPkgs nixpkgs-unstable [];
 
     lib = nixpkgs.lib.extend(self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
+
+    inherit (lib.my) mapModules mapModulesRec mapHosts mapDarwinHosts;
   in {
     lib = lib.my;
 
@@ -34,6 +37,26 @@
 
     nixosModules = { dotfiles = import ./.; } // mapModulesRec ./modules import;
 
-    nixosConfigurations = mapHosts ./hosts {};
+    nixosConfigurations = mapHosts ./hosts/nixos {};
+
+    darwinConfigurations = {
+      stagios = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        inherit lib;
+        modules = [
+          ./hosts/darwin/stagios/default.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.users.edouardlacourt.imports = [
+              ./home-manager/options.nix
+              ./home-manager/hosts/stagios/default.nix
+              ./home-manager/modules/shells/fish.nix
+            ];
+            users.users.edouardlacourt.home = "/Users/edouardlacourt";
+          }
+        ];
+        specialArgs = { inherit inputs; };
+      };
+    };
   };
 }
