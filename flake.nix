@@ -44,11 +44,11 @@
         system = "aarch64-darwin";
         inherit lib;
         modules = [
-          ./hosts/darwin/stagios/default.nix
+          ./home-manager/default.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.users.edouardlacourt.imports = [
-              ./home-manager/options.nix
+              ./home-manager/modules/options.nix
               ./home-manager/hosts/stagios/default.nix
               ./home-manager/modules/shells/fish.nix
             ];

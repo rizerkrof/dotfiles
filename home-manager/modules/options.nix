@@ -11,7 +11,7 @@ with lib.my;
       (removePrefix 
         "/mnt"
         (findFirst pathExists 
-          (toString ../.) 
+          (toString ../../.) 
           [ "/mnt/etc/dotfiles" "/etc/dotfiles" ]
         )
       );
