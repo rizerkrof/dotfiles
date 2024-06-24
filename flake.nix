@@ -26,7 +26,7 @@
 
     lib = nixpkgs.lib.extend(self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
 
-    inherit (lib.my) mapModules mapModulesRec mapHosts mapDarwinHosts;
+    inherit (lib.my) mapModules mapModulesRec mapHosts mapDarwinHosts mapHostUsers;
   in {
     lib = lib.my;
 
@@ -46,16 +46,8 @@
         modules = [
           ./home-manager/default.nix
           home-manager.darwinModules.home-manager
-          {
-            home-manager.users.edouardlacourt.imports = [
-              ./home-manager/modules/options.nix
-              ./home-manager/hosts/stagios/default.nix
-              ./home-manager/modules/shells/fish.nix
-            ];
-            users.users.edouardlacourt.home = "/Users/edouardlacourt";
-          }
+          (mapHostUsers ./home-manager/hosts/stagios ./home-manager/modules)
         ];
-        specialArgs = { inherit inputs; };
       };
     };
   };

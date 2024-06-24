@@ -2,7 +2,9 @@
 
 with lib;
 with lib.my;
-let sys = "x86_64-linux";
+let 
+  sys = "x86_64-linux";
+  inherit (builtins) readDir;
 in {
   mkHost = path: attrs @ { system ? sys, ... }:
     nixosSystem {
@@ -21,4 +23,19 @@ in {
 
   mapHosts = dir: attrs @ { system ? sys, ... }:
     mapModules dir (hostPath: mkHost hostPath attrs);
+
+  mapHostUsers = hostsDir: modulesDir: {
+    home-manager.users = mapAttrs
+      (n: v: {
+        imports = [
+          (modulesDir + "/options.nix")
+          (hostsDir + "/${n}/default.nix")
+          (modulesDir + "/shells/fish.nix")
+        ];
+      })
+      (readDir hostsDir);
+    users.users = mapAttrs
+      (n: v: { home = "/Users/${n}"; })
+      (readDir hostsDir);
+  };
 }
