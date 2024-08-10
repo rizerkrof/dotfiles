@@ -24,18 +24,25 @@ in {
   mapHosts = dir: attrs @ { system ? sys, ... }:
     mapModules dir (hostPath: mkHost hostPath attrs);
 
-  mapHostUsers = hostsDir: modulesDir: {
+  mapHostUsers = hostDir: modulesDir: {
+    imports = [
+      (hostDir + "/default.nix")
+      (modulesDir + "/desktop/term/kitty.nix")
+      (modulesDir + "/desktop/term/iterm2.nix")
+      (modulesDir + "/desktop/apps/slack.nix")
+    ];
     home-manager.users = mapAttrs
       (n: v: {
         imports = [
           (modulesDir + "/options.nix")
-          (hostsDir + "/${n}/default.nix")
+          (hostDir + "/${n}/default.nix")
           (modulesDir + "/shells/fish.nix")
+          (modulesDir + "/shells/hello.nix")
         ];
       })
-      (readDir hostsDir);
+      (filterAttrs (n: v: v == "directory") (readDir hostDir));
     users.users = mapAttrs
       (n: v: { home = "/Users/${n}"; })
-      (readDir hostsDir);
+      (readDir hostDir);
   };
 }

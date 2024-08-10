@@ -4,6 +4,6 @@
   };
 
   modules = {   
-    shell.fish.enable = true;
+    shell.hello.enable = true;
   };
 }
