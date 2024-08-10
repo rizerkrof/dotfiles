@@ -30,6 +30,9 @@ in {
       (modulesDir + "/desktop/term/kitty.nix")
       (modulesDir + "/desktop/term/iterm2.nix")
       (modulesDir + "/desktop/apps/slack.nix")
+      (modulesDir + "/desktop/apps/figma.nix")
+      (modulesDir + "/desktop/apps/blender.nix")
+      (modulesDir + "/desktop/apps/dbeaver.nix")
     ];
     home-manager.users = mapAttrs
       (n: v: {
