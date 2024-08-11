@@ -1,4 +1,4 @@
-{ config, options, lib, ... }:
+{ config, options, pkgs, lib, ... }:
 
 with lib;
 with lib.my;
@@ -10,8 +10,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    homebrew = {
-      casks = ["kitty"];
+    home.packages = with pkgs; [
+      kitty
+    ];
+
+    home.configFile = {
+      "kitty/kitty.conf".text = ''
+        globinclude kitty.d/**/*.conf
+      '';
     };
   };
 }

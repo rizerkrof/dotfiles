@@ -27,7 +27,6 @@ in {
   mapHostUsers = hostDir: modulesDir: {
     imports = [
       (hostDir + "/default.nix")
-      (modulesDir + "/desktop/term/kitty.nix")
       (modulesDir + "/desktop/term/iterm2.nix")
       (modulesDir + "/desktop/apps/slack.nix")
       (modulesDir + "/desktop/apps/figma.nix")
@@ -37,8 +36,9 @@ in {
     home-manager.users = mapAttrs
       (n: v: {
         imports = [
-          (modulesDir + "/options.nix")
           (hostDir + "/${n}/default.nix")
+          (modulesDir + "/options.nix")
+          (modulesDir + "/desktop/term/kitty.nix")
           (modulesDir + "/shells/fish.nix")
           (modulesDir + "/shells/hello.nix")
         ];
