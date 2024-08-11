@@ -27,21 +27,13 @@ in {
   mapHostUsers = hostDir: modulesDir: {
     imports = [
       (hostDir + "/default.nix")
-      (modulesDir + "/homebrew/casks/iterm2.nix")
-      (modulesDir + "/homebrew/casks/slack.nix")
-      (modulesDir + "/homebrew/casks/figma.nix")
-      (modulesDir + "/homebrew/casks/blender.nix")
-      (modulesDir + "/homebrew/casks/dbeaver.nix")
-    ];
+    ] ++ mapModulesRec' (modulesDir + "/homebrew") import;
     home-manager.users = mapAttrs
       (n: v: {
         imports = [
           (hostDir + "/${n}/default.nix")
           (modulesDir + "/options.nix")
-          (modulesDir + "/home-manager/desktop/term/kitty.nix")
-          (modulesDir + "/home-manager/shells/fish.nix")
-          (modulesDir + "/home-manager/shells/hello.nix")
-        ];
+        ] ++ mapModulesRec' (modulesDir + "/home-manager") import;
       })
       (filterAttrs (n: v: v == "directory") (readDir hostDir));
     users.users = mapAttrs
