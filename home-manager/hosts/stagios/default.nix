@@ -1,11 +1,10 @@
 {
     modules = {
-        desktop.term = {
-            iterm2.enable = true;
+        homebrew.casks = {
+            slack.enable = true;
+            figma.enable = true;
+            blender.enable = true;
+            dbeaver.enable = true;
         };
-        desktop.apps.slack.enable = true;
-        desktop.apps.figma.enable = true;
-        desktop.apps.blender.enable = true;
-        desktop.apps.dbeaver.enable = true;
     };
 }

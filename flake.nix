@@ -44,7 +44,7 @@
         system = "aarch64-darwin";
         inherit lib;
         modules = [
-          ./home-manager/default.nix
+          ./home-manager/modules/home-manager/default.nix
           home-manager.darwinModules.home-manager
           (mapHostUsers ./home-manager/hosts/stagios ./home-manager/modules)
         ];

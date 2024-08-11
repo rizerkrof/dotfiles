@@ -2,16 +2,16 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.dbeaver;
+let cfg = config.modules.homebrew.casks.blender;
 configDir = config.dotfiles.configDir;
 in {
-  options.modules.desktop.apps.dbeaver = with types; {
+  options.modules.homebrew.casks.blender = with types; {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     homebrew = {
-      casks = ["dbeaver-community"];
+      casks = ["blender"];
     };
   };
 }

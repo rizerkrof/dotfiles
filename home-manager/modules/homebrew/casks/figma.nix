@@ -2,16 +2,16 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.slack;
+let cfg = config.modules.homebrew.casks.figma;
 configDir = config.dotfiles.configDir;
 in {
-  options.modules.desktop.apps.slack = with types; {
+  options.modules.homebrew.casks.figma = with types; {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     homebrew = {
-      casks = ["slack"];
+      casks = ["figma"];
     };
   };
 }

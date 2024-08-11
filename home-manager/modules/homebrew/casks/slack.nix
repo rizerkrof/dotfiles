@@ -2,16 +2,16 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.blender;
+let cfg = config.modules.homebrew.casks.slack;
 configDir = config.dotfiles.configDir;
 in {
-  options.modules.desktop.apps.blender = with types; {
+  options.modules.homebrew.casks.slack = with types; {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     homebrew = {
-      casks = ["blender"];
+      casks = ["slack"];
     };
   };
 }
