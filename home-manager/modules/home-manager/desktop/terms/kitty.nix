@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.term.kitty;
+let cfg = config.modules.desktop.terms.kitty;
 configDir = config.dotfiles.configDir;
 in {
-  options.modules.desktop.term.kitty = with types; {
+  options.modules.desktop.terms.kitty = with types; {
     enable = mkBoolOpt false;
   };
 

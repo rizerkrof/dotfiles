@@ -5,6 +5,6 @@
 
   modules = {   
     shell.fish.enable = true;
-    desktop.term.kitty.enable = true;
+    desktop.terms.kitty.enable = true;
   };
 }
