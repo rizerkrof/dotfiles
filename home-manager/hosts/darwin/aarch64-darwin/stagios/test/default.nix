@@ -4,6 +4,6 @@
   };
 
   modules = {   
-    shell.hello.enable = true;
+    tests.hello.enable = true;
   };
 }

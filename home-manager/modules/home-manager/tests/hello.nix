@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.hello;
+let cfg = config.modules.tests.hello;
 configDir = config.dotfiles.configDir;
 in {
-  options.modules.shell.hello = with types; {
+  options.modules.tests.hello = with types; {
     enable = mkBoolOpt false;
   };
 
