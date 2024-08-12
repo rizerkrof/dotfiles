@@ -6,9 +6,6 @@ let
   inherit (builtins) readDir;
 in {
   mapHostUsers = hostDir: modulesDir: {
-    imports = [
-      (hostDir + "/default.nix")
-    ] ++ mapModulesRec' (modulesDir + "/homebrew") import;
     home-manager.users = mapAttrs
       (n: v: {
         imports = [

@@ -1,8 +1,7 @@
 {
   description = "A grossly incandescent nixos config.";
 
-  inputs = 
-  {
+  inputs = {
     # Core dependencies.
     nixpkgs.url = "nixpkgs/nixos-unstable";             # primary nixpkgs
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";  # for packages on the edge
@@ -10,7 +9,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
   };
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, ... }:
@@ -26,7 +24,7 @@
 
     lib = nixpkgs.lib.extend(self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
 
-    inherit (lib.my) mapModules mapModulesRec mapHosts mapDarwinHosts mapHostUsers;
+    inherit (lib.my) mapModules mapModulesRec mapHosts mapDarwinHosts mapHosts';
   in {
     lib = lib.my;
 
@@ -39,16 +37,6 @@
 
     nixosConfigurations = mapHosts ./hosts/nixos {};
 
-    darwinConfigurations = {
-      stagios = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        inherit lib;
-        modules = [
-          ./home-manager/modules/home-manager/default.nix
-          home-manager.darwinModules.home-manager
-          (mapHostUsers ./home-manager/hosts/stagios ./home-manager/modules)
-        ];
-      };
-    };
+    darwinConfigurations = mapHosts' ./home-manager/hosts/darwin;
   };
 }
