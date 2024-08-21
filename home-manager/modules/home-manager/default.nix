@@ -22,4 +22,8 @@
       experimental-features = [ "nix-command" "flakes"];
     };
   };
+
+  stylix.enable = true;
+  stylix.image = ../../../wallpaper.jpg;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 }

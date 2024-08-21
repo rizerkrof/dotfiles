@@ -10,6 +10,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.kitty.enable = true;
+
     home.packages = with pkgs; [
       kitty
     ];
