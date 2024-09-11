@@ -7,6 +7,7 @@
     shell.fish.enable = true;
     dev.go.enable = true;
     dev.node.enable = true;
+    services.docker.enable = true;
     desktop = {
       terms.kitty.enable = true;
       communications = {
