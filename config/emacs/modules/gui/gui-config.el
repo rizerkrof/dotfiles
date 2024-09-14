@@ -95,7 +95,10 @@ Inhibits startup screen on the first unrecognised option."
  '(rainbow-delimiters-depth-8-face ((t (:foreground "firebrick"))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "red")))))
 
-(add-to-list 'default-frame-alist '(alpha-background . 90)) ; For all new frames henceforth
+;(add-to-list 'default-frame-alist '(alpha 65 65)) ; For all new frames henceforth
+;(add-to-list 'default-frame-alist '(alpha-background 65)) ; For all new frames henceforth
+(set-frame-parameter nil 'alpha-background 65)
+(add-to-list 'default-frame-alist '(alpha-background . 65))
 
 (use-package doom-modeline
   :ensure t
