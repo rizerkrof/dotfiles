@@ -5,6 +5,7 @@ with lib.my;
 let 
     inherit (builtins) readDir;
     darwinSystem = inputs.nix-darwin.lib.darwinSystem;
+    options = ../home-manager/modules/options.nix;
 in {
     mkDarwinHost = hostDir: system: darwinSystem {
         inherit system lib;
@@ -13,7 +14,7 @@ in {
             inputs.stylix.darwinModules.stylix
             "${hostDir}/default.nix"
             ../home-manager/modules/default.nix
-            (mapHostUsers hostDir ../home-manager/modules)
+            (mapHostUsersHome hostDir ../home-manager/modules/home-manager options)
         ] ++ (mapModulesRec' ../home-manager/modules/homebrew import);
     };
 }
