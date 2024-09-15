@@ -3,16 +3,16 @@
 with lib;
 with lib.my;
 {
-  imports =
+  # imports =
     # I use home-manager to deploy files to $HOME; little else
-    [ inputs.home-manager.nixosModules.home-manager ]
+    # [ inputs.home-manager.nixosModules.home-manager ]
     # All my personal modules
-    ++ (mapModulesRec' (toString ./modules) import);
+    # ++ (mapModulesRec' (toString ./modules) import);
 
     # Common config for all nixos machines; and to ensure the flake operates
     # soundly
-    environment.variables.DOTFILES = config.dotfiles.dir;
-    environment.variables.DOTFILES_BIN = config.dotfiles.binDir;
+    #environment.variables.DOTFILES = config.dotfiles.dir;
+    #environment.variables.DOTFILES_BIN = config.dotfiles.binDir;
 
     # Configure nix and nixpkgs
     environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
@@ -23,10 +23,10 @@ with lib.my;
       in {
         package = pkgs.nixFlakes;
         nixPath = nixPathInputs ++ [
-          "nixpkgs-overlays=${config.dotfiles.dir}/overlays"
-          "dotfiles=${config.dotfiles.dir}"
+          #     "nixpkgs-overlays=${config.dotfiles.dir}/overlays"
+          #    "dotfiles=${config.dotfiles.dir}"
         ];
-        registry = registryInputs // { dotfiles.flake = inputs.self; };
+        # registry = registryInputs // { dotfiles.flake = inputs.self; };
         settings = {
           experimental-features = [ "nix-command" "flakes" ];
           substituters = [

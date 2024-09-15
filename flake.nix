@@ -14,30 +14,30 @@
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, ... }:
   let
-    system = "x86_64-linux";
+    #system = "x86_64-linux";
 
-    mkPkgs = pkgs: extraOverlays: import pkgs {
-      inherit system;
-      config.allowUnfree = true;  # forgive me Stallman senpai
-    };
-    pkgs  = mkPkgs nixpkgs [ self.overlay ];
-    pkgs' = mkPkgs nixpkgs-unstable [];
+    #mkPkgs = pkgs: extraOverlays: import pkgs {
+      #inherit system;
+      # config.allowUnfree = true;  # forgive me Stallman senpai
+      #};
+      #pkgs  = mkPkgs nixpkgs [ self.overlay ];
+      #pkgs' = mkPkgs nixpkgs-unstable [];
 
-    lib = nixpkgs.lib.extend(self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
+      lib = nixpkgs.lib.extend(self: super: { my = import ./lib { inherit inputs; lib = self; }; });
 
-    inherit (lib.my) mapModules mapModulesRec mapHosts mapDarwinHosts mapHosts';
+      inherit (lib.my) mapModules mapModulesRec mapHosts mapDarwinHosts mapHosts';
   in {
     lib = lib.my;
 
-    overlay = final: prev: {
-      unstable = pkgs';
-      my = self.packages."${system}";
-    };
+    #overlay = final: prev: {
+      # unstable = pkgs';
+      #my = self.packages."${system}";
+      #};
 
-    nixosModules = { dotfiles = import ./.; } // mapModulesRec ./modules import;
+      nixosModules = { dotfiles = import ./.; } // mapModulesRec ./modules import;
 
-    nixosConfigurations = mapHosts ./hosts/nixos {};
+      nixosConfigurations = mapHosts' ./hosts/nixos;
 
-    darwinConfigurations = mapHosts' ./home-manager/hosts/darwin;
+      darwinConfigurations = mapHosts' ./hosts/darwin;
   };
 }

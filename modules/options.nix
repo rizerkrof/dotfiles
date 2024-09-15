@@ -22,7 +22,7 @@ with lib.my;
     };
 
     home = {
-      file       = mkOpt' attrs {} "Files to place directly in $HOME";
+      #file       = mkOpt' attrs {} "Files to place directly in $HOME";
       configFile = mkOpt' attrs {} "Files to place in $XDG_CONFIG_HOME";
       dataFile   = mkOpt' attrs {} "Files to place in $XDG_DATA_HOME";
     };
@@ -39,6 +39,7 @@ with lib.my;
   };
 
   config = {
+    /*
     user =
       let user = builtins.getEnv "USER";
       name = if elem user [ "" "root" ] then "doudou" else user;
@@ -51,11 +52,11 @@ with lib.my;
         group = "users";
         uid = 1000;
       };
-
+*/
       # Install user packages to /etc/profiles instead. Necessary for
       # nixos-rebuild build-vm to work.
-      home-manager = {
-        useUserPackages = true;
+      #home-manager = {
+        #useUserPackages = true;
 
         # I only need a subset of home-manager's capabilities. That is, access to
         # its home.file, home.xdg.configFile and home.xdg.dataFile so I can deploy
@@ -65,33 +66,34 @@ with lib.my;
         #   home.file        ->  home-manager.users.doudou.home.file
         #   home.configFile  ->  home-manager.users.doudou.home.xdg.configFile
         #   home.dataFile    ->  home-manager.users.doudou.home.xdg.dataFile
-        users.${config.user.name} = {
-          home = {
-            file = mkAliasDefinitions options.home.file;
-            # Necessary for home-manager to work with flakes, otherwise it will
-            # look for a nixpkgs channel.
-            stateVersion = config.system.stateVersion;
-          };
+        #users.edouardlacourt = {
+        #   home = {
+        #     file = mkAliasDefinitions options.home.file;
+        #     # Necessary for home-manager to work with flakes, otherwise it will
+        #     # look for a nixpkgs channel.
+        #     stateVersion = config.home.stateVersion;
+        #   };
           xdg = {
             configFile = mkAliasDefinitions options.home.configFile;
             dataFile   = mkAliasDefinitions options.home.dataFile;
           };
-        };
-      };
+    #     };
+    #   };
 
-      users.users.${config.user.name} = mkAliasDefinitions options.user;
+    #   users.users.${config.user.name} = mkAliasDefinitions options.user;
 
+          /*
       nix.settings = let users = [ "root" config.user.name ]; in {
         trusted-users = users;
         allowed-users = users;
-      };
+      };*/
 
       # must already begin with pre-existing PATH. Also, can't use binDir here,
       # because it contains a nix store path.
       env.PATH = [ "$DOTFILES_BIN" "$XDG_BIN_HOME" "$PATH" ];
 
-      environment.extraInit =
-        concatStringsSep "\n"
-        (mapAttrsToList (n: v: "export ${n}=\"${v}\"") config.env);
+    #   environment.extraInit =
+    #     concatStringsSep "\n"
+    #     (mapAttrsToList (n: v: "export ${n}=\"${v}\"") config.env);
   };
 }

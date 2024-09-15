@@ -31,6 +31,11 @@ in {
                 systemOfHosts
                 mkDarwinHost
                 hostsTypeDir
+        else if hasSuffix "nixos" hostsTypeDir then
+            mapHostsOfType
+                systemOfHosts
+                mkNixosHost
+                hostsTypeDir
         else
             {};
 
@@ -41,5 +46,4 @@ in {
                 hostInfo.system
         )
         systemOfHosts;
-
 }
