@@ -9,7 +9,6 @@ in {
   mapNixosHostUsers = hostDir: homeDir: {
     users.users = mapAttrs
     (user: v: { 
-      home = "/${homeDir}/${user}"; 
       extraGroups = ["wheel" "audio" "video"];
       initialPassword = "nixos";
       isNormalUser = true;
@@ -29,7 +28,6 @@ in {
     inherit system lib pkgs;
     specialArgs = { inherit pkgs inputs home-manager system; };
     modules = [
-      ../default.nix
       {
         nixpkgs.pkgs = pkgs;
         networking.hostName = mkDefault (baseNameOf hostDir);
@@ -39,6 +37,7 @@ in {
       "${hostDir}/default.nix"
       "${hostDir}/hardware-configuration.nix"
       ../modules/default.nix
+      ../modules/nixos/default.nix
       (mapHostUsers hostDir "home")
       (mapNixosHostUsers hostDir "home")
       (mapHostUsersHome hostDir ../modules/home-manager "home" ../modules/options.nix)
