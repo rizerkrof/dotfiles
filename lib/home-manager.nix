@@ -19,14 +19,5 @@ in {
       xdg.enable = true;
     })
     (filterAttrs (n: v: v == "directory") (readDir hostDir));
-    users.users = mapAttrs
-    (user: v: { 
-    home = "/${homeDir}/${user}"; 
-    extraGroups = ["wheel" "audio" "video"];
-    initialPassword = "nixos";
-    isNormalUser = true;
-    group = "users";
-    })
-    (filterAttrs (n: v: v == "directory") (readDir hostDir));
   };
 }

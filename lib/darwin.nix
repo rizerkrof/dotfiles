@@ -14,7 +14,9 @@ in {
       inputs.stylix.darwinModules.stylix
       "${hostDir}/default.nix"
       ../modules/default.nix
+      ../modules/darwin/default.nix
+      (mapHostUsers hostDir "Users")
       (mapHostUsersHome hostDir ../modules/home-manager "Users" options)
-    ] ++ (mapModulesRec' ../modules/homebrew import);
+    ] ++ (mapModulesRec' ../modules/darwin import);
   };
 }

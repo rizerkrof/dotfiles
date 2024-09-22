@@ -6,23 +6,17 @@ let
 sys = "x86_64-linux";
 inherit (builtins) readDir;
 in {
-  mkHost = path: attrs @ { system ? sys, ... }:
-  nixosSystem {
-    inherit system;
-    specialArgs = { inherit lib inputs system; };
-    modules = [
-      {
-        nixpkgs.pkgs = pkgs;
-        networking.hostName = mkDefault (removeSuffix ".nix" (baseNameOf path));
-      }
-      (filterAttrs (n: v: !elem n [ "system" ]) attrs)
-      ../.   # /default.nix
-      (import path)
-    ];
+  mapNixosHostUsers = hostDir: homeDir: {
+    users.users = mapAttrs
+    (user: v: { 
+      home = "/${homeDir}/${user}"; 
+      extraGroups = ["wheel" "audio" "video"];
+      initialPassword = "nixos";
+      isNormalUser = true;
+      group = "users";
+    })
+    (filterAttrs (n: v: v == "directory") (readDir hostDir));
   };
-
-  mapHosts = dir: attrs @ { system ? sys, ... }:
-  mapModules dir (hostPath: mkHost hostPath attrs);
 
   mkNixosHost = hostDir: system: 
   let
@@ -45,6 +39,8 @@ in {
       "${hostDir}/default.nix"
       "${hostDir}/hardware-configuration.nix"
       ../modules/default.nix
+      (mapHostUsers hostDir "home")
+      (mapNixosHostUsers hostDir "home")
       (mapHostUsersHome hostDir ../modules/home-manager "home" ../modules/options.nix)
     ] ++ (mapModulesRec' ../modules/nixos import);
   };

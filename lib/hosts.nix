@@ -46,4 +46,12 @@ in {
                 hostInfo.system
         )
         systemOfHosts;
+
+    mapHostUsers = hostDir: homeDir: {
+        users.users = mapAttrs
+            (user: v: { 
+                home = "/${homeDir}/${user}";
+            })
+            (filterAttrs (n: v: v == "directory") (readDir hostDir));
+    };
 }

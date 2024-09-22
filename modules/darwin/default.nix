@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  system.stateVersion = 5;
+
   homebrew = {
     enable = true;
     onActivation.cleanup = "uninstall";
