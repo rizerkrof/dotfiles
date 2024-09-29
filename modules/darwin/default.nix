@@ -17,4 +17,14 @@
       experimental-features = [ "nix-command" "flakes"];
     };
   };
+
+  system = {
+    defaults = {
+      NSGlobalDomain._HIHideMenuBar = true;
+      finder.CreateDesktop = false;
+      dock = {
+        autohide = true;
+      };
+    }; 
+  };
 }
