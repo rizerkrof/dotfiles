@@ -9,6 +9,7 @@
     dev.node.enable = true;
     services.docker.enable = true;
     desktop = {
+      aerospace.enable = true;
       terms.kitty.enable = true;
       communications = {
         slack.enable = true;
