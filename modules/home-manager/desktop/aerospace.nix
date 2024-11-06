@@ -1,10 +1,18 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.aerospace;
-configDir = config.dotfiles.configDir;
-in {
+let
+  cfg = config.modules.desktop.aerospace;
+  configDir = config.dotfiles.configDir;
+in
+{
   options.modules.desktop.aerospace = {
     enable = mkBoolOpt false;
   };

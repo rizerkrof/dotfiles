@@ -1,10 +1,18 @@
-{ config, options, pkgs, lib, ... }:
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.communications.discord;
-configDir = config.dotfiles.configDir;
-in {
+let
+  cfg = config.modules.desktop.communications.discord;
+  configDir = config.dotfiles.configDir;
+in
+{
   options.modules.desktop.communications.discord = with types; {
     enable = mkBoolOpt false;
   };

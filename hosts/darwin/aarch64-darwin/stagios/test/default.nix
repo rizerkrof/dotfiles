@@ -3,7 +3,7 @@
     stateVersion = "23.05";
   };
 
-  modules = {   
+  modules = {
     tests.hello.enable = true;
   };
 }

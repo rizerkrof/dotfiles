@@ -1,10 +1,18 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.xmonad;
+let
+  cfg = config.modules.desktop.xmonad;
+in
 #configDir = config.dotfiles.configDir;
-in {
+{
   options.modules.desktop.xmonad = {
     enable = mkBoolOpt false;
   };

@@ -14,7 +14,10 @@
   nix = {
     package = pkgs.nixFlakes;
     settings = {
-      experimental-features = [ "nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
   };
 
@@ -25,6 +28,6 @@
       dock = {
         autohide = true;
       };
-    }; 
+    };
   };
 }

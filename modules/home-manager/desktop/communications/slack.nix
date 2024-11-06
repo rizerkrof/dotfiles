@@ -1,10 +1,18 @@
-{ config, options, pkgs, lib, ... }:
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.communications.slack;
-configDir = config.dotfiles.configDir;
-in {
+let
+  cfg = config.modules.desktop.communications.slack;
+  configDir = config.dotfiles.configDir;
+in
+{
   options.modules.desktop.communications.slack = with types; {
     enable = mkBoolOpt false;
   };
@@ -15,10 +23,10 @@ in {
     ];
 
     nixpkgs = {
-        config = {
-            allowUnfree = true;
-            allowUnfreePredicate = (_: true);
-        };
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = (_: true);
+      };
     };
   };
 }

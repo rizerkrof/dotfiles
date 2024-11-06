@@ -1,10 +1,18 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.editors.emacs;
-configDir = config.dotfiles.configDir;
-in {
+let
+  cfg = config.modules.editors.emacs;
+  configDir = config.dotfiles.configDir;
+in
+{
   options.modules.editors.emacs = {
     enable = mkBoolOpt false;
   };
@@ -12,22 +20,21 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       ## Emacs itself
-      binutils       # native-comp needs 'as', provided by this
+      binutils # native-comp needs 'as', provided by this
       # 28.2 + native-comp
-      ((emacsPackagesFor emacsNativeComp).emacsWithPackages
-      (epkgs: [ epkgs.vterm ]))
+      ((emacsPackagesFor emacsNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm ]))
 
       ## Doom dependencies
       git
-      (ripgrep.override {withPCRE2 = true;})
-      gnutls              # for TLS connectivity
+      (ripgrep.override { withPCRE2 = true; })
+      gnutls # for TLS connectivity
 
       ## Optional dependencies
-      fd                  # faster projectile indexing
-      imagemagick         # for image-dired
+      fd # faster projectile indexing
+      imagemagick # for image-dired
       #(mkIf (config.programs.gpg.agent.enable)
       #pinentry_emacs)   # in-emacs gnupg prompts
-      zstd                # for undo-fu-session/undo-tree compression
+      zstd # for undo-fu-session/undo-tree compression
 
       ## Module dependencies
       # :checkers spell

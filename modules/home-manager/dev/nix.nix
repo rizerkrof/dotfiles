@@ -1,11 +1,19 @@
-{ config, options, pkgs, lib, ... }:
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.dev.nix;
-configDir = config.dotfiles.configDir;
-in {
-  options.modules.dev.nix= with types; {
+let
+  cfg = config.modules.dev.nix;
+  configDir = config.dotfiles.configDir;
+in
+{
+  options.modules.dev.nix = with types; {
     enable = mkBoolOpt false;
   };
 

@@ -1,10 +1,18 @@
-{ config, options, pkgs, lib, ... }:
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.fish;
-configDir = config.dotfiles.configDir;
-in {
+let
+  cfg = config.modules.shell.fish;
+  configDir = config.dotfiles.configDir;
+in
+{
   options.modules.shell.fish = with types; {
     enable = mkBoolOpt false;
   };
@@ -28,8 +36,8 @@ in {
     ];
 
     home.configFile.fish = {
-        source = "${configDir}/fish";
-        recursive = true;
+      source = "${configDir}/fish";
+      recursive = true;
     };
   };
 }

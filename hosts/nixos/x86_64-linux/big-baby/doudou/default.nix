@@ -24,5 +24,4 @@
       emacs.enable = true;
     };
   };
-
 }

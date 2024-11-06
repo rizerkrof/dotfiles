@@ -3,7 +3,7 @@
     stateVersion = "23.05";
   };
 
-  modules = {   
+  modules = {
     shell.fish.enable = true;
     dev.go.enable = true;
     dev.node.enable = true;
