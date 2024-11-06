@@ -7,6 +7,7 @@
     shell.fish.enable = true;
     dev.go.enable = true;
     dev.node.enable = true;
+    dev.nix.enable = true;
     services.docker.enable = true;
     desktop = {
       aerospace.enable = true;
