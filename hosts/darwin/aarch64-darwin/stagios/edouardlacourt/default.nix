@@ -5,6 +5,7 @@
 
   modules = {
     shell.fish.enable = true;
+    shell.nushell.enable = true;
     dev.go.enable = true;
     dev.node.enable = true;
     dev.nix.enable = true;
