@@ -29,7 +29,7 @@ with lib.my;
       registryInputs = mapAttrs (_: v: { flake = v; }) filteredInputs;
     in
     {
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.stable;
       nixPath = nixPathInputs ++ [
         #     "nixpkgs-overlays=${config.dotfiles.dir}/overlays"
         #    "dotfiles=${config.dotfiles.dir}"

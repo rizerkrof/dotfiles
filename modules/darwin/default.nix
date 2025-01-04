@@ -12,7 +12,7 @@
   services.nix-daemon.enable = true;
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     settings = {
       experimental-features = [
         "nix-command"
