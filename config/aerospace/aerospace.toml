@@ -85,8 +85,8 @@ outer.right = 18
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+# alt-slash = 'layout tiles horizontal vertical'
+# alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
@@ -101,38 +101,38 @@ alt-shift-k = 'move up'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-alt-0 = 'workspace 0'
+alt-z = 'workspace 2'
+alt-g = 'workspace 3'
+alt-r = 'workspace 4'
+alt-t = 'workspace 5'
+alt-y = 'workspace 6'
+alt-u = 'workspace 7'
+alt-i = 'workspace 8'
+alt-o = 'workspace 9'
+alt-p = 'workspace 0'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-0 = 'move-node-to-workspace 0'
+alt-shift-z = 'move-node-to-workspace 2'
+alt-shift-g = 'move-node-to-workspace 3'
+alt-shift-r = 'move-node-to-workspace 4'
+alt-shift-t = 'move-node-to-workspace 5'
+alt-shift-y = 'move-node-to-workspace 6'
+alt-shift-u = 'move-node-to-workspace 7'
+alt-shift-i = 'move-node-to-workspace 8'
+alt-shift-o = 'move-node-to-workspace 9'
+alt-shift-p = 'move-node-to-workspace 0'
 
-alt-shift-f = 'fullscreen'
+alt-space = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
+alt-comma = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+alt-shift-space = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-s = 'mode service'
 
-alt-shift-r = 'mode resize'
+alt-shift-n = 'mode resize'
 
 [mode.resize.binding]
 h = 'resize width -50'
@@ -168,12 +168,12 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = "move-node-to-workspace 9"
+run = "move-node-to-workspace 7"
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
-run = "move-node-to-workspace 0"
+run = "move-node-to-workspace 8"
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = "move-node-to-workspace 3"
+run = "move-node-to-workspace 6"
