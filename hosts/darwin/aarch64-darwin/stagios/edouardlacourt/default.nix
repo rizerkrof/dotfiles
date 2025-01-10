@@ -10,6 +10,7 @@
     dev.node.enable = true;
     dev.nix.enable = true;
     services.docker.enable = true;
+    services.colima.enable = true;
     desktop = {
       aerospace.enable = true;
       terms.kitty.enable = true;
