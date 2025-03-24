@@ -12,6 +12,9 @@
     services.docker.enable = true;
     services.colima.enable = true;
     desktop = {
+      browsers = {
+        chrome.enable = true;
+      };
       aerospace.enable = true;
       terms.kitty.enable = true;
       communications = {
