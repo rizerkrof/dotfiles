@@ -7,4 +7,6 @@
       aerospace.enable = true;
     };
   };
+
+  ids.gids.nixbld = 30000;
 }
