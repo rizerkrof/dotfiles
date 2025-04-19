@@ -18,6 +18,8 @@ in
   config = mkIf cfg.enable {
     programs.google-chrome.enable = true;
 
+    nixpkgs.config.allowUnfree = true;
+
     home.packages = with pkgs; [
       google-chrome
     ];
