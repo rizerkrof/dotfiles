@@ -14,6 +14,7 @@
     desktop = {
       browsers = {
         chrome.enable = true;
+        firefox.enable = true;
       };
       aerospace.enable = true;
       terms.kitty.enable = true;
