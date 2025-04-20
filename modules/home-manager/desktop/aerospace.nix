@@ -18,6 +18,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      aerospace
+    ];
+
     home.configFile = {
       "aerospace" = {
         source = "${configDir}/aerospace";
