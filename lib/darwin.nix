@@ -13,6 +13,7 @@ in
     darwinSystem {
       inherit system lib;
       modules = [
+        inputs.mac-app-util.darwinModules.default
         inputs.home-manager.darwinModules.home-manager
         inputs.stylix.darwinModules.stylix
         "${hostDir}/default.nix"

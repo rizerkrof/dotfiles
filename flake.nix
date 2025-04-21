@@ -11,6 +11,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    mac-app-util.url = "github:hraban/mac-app-util"; # used to show darwin programs in spotlight
   };
 
   outputs =

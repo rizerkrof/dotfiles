@@ -7,6 +7,9 @@ let
 in
 {
   mapHostUsersHome = hostDir: modulesDir: homeDir: options: {
+    home-manager.sharedModules = [
+      inputs.mac-app-util.homeManagerModules.default
+    ];
     home-manager.extraSpecialArgs = {
       inherit inputs;
     };
