@@ -16,6 +16,7 @@
         chrome.enable = true;
         firefox.enable = true;
       };
+      editors.vscode.enable = true;
       aerospace.enable = true;
       terms.kitty.enable = true;
       communications = {
