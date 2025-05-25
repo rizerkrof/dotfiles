@@ -13,12 +13,15 @@
         kitty.enable = true;
       };
       browsers = {
-        #       default = "brave";
         brave.enable = true;
       };
     };
     shell = {
       fish.enable = true;
+    };
+    dev = {
+      python.enable = true;
+      nix.enable = true;
     };
     editors = {
       emacs.enable = true;
