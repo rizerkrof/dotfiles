@@ -7,6 +7,7 @@ let
 in
 {
   mapHostUsersHome = hostDir: modulesDir: homeDir: options: {
+    home-manager.backupFileExtension = "backup";
     home-manager.sharedModules = [
       inputs.mac-app-util.homeManagerModules.default
     ];
