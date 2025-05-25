@@ -89,9 +89,5 @@ in
     };
 
     stylix.targets.firefox.profileNames = [ "default" ];
-
-    home.packages = with pkgs; [
-      firefox
-    ];
   };
 }
