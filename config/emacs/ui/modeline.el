@@ -1,10 +1,10 @@
 (use-package
  doom-modeline
- :init (doom-modeline-mode 1)
- :config
+ :init
  (setq
   doom-modeline-height 25
-  doom-modeline-bar-width 5))
+  doom-modeline-bar-width 5)
+ :config (doom-modeline-mode 1))
 
 (use-package
  nyan-mode
