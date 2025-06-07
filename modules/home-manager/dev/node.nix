@@ -20,6 +20,10 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       nodejs
+      pnpm
+      typescript
+      typescript-language-server
+      nodePackages.prettier
     ];
   };
 }

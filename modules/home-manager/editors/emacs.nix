@@ -113,18 +113,21 @@ in
           epkgs = epkgs: with epkgs; [ magit ];
         }
         {
+          configFilePath = "dev/lsp.el";
+          epkgs =
+            epkgs: with epkgs; [
+              treesit-grammars.with-all-grammars
+              eldoc-box
+            ];
+        }
+        {
           configFilePath = "dev/langs/elisp.el";
           enable = config.modules.dev.python.enable; # Python needed for elisp-autofmt
           epkgs = epkgs: with epkgs; [ elisp-autofmt ];
         }
         {
-          configFilePath = "dev/langs/typescript.el";
-          enable = config.modules.dev.typescript.enable;
-          epkgs =
-            epkgs: with epkgs; [
-              typescript-mode
-              web-mode
-            ];
+          configFilePath = "dev/langs/node.el";
+          enable = config.modules.dev.node.enable;
         }
         {
           configFilePath = "dev/langs/nix.el";
@@ -148,15 +151,22 @@ in
         enable = true;
         extraPackages =
           epkgs:
-          lib.flatten (
-            lib.concatMap (
-              opt: lib.optionals ((!(opt ? enable) || opt.enable) && opt ? epkgs) (opt.epkgs epkgs)
-            ) configOptions
-          );
+          let
+            commonPackages = with epkgs; [
+              markdown-mode # For eldoc rendering
+            ];
+            configPackages = lib.flatten (
+              lib.concatMap (
+                opt: lib.optionals ((!(opt ? enable) || opt.enable) && opt ? epkgs) (opt.epkgs epkgs)
+              ) configOptions
+            );
+          in
+          commonPackages ++ configPackages;
       };
 
       home.packages = with pkgs; [
         coreutils # For GNU ls. Needed by dired config on macOS.
+        tree-sitter
       ];
 
       home.configFile = mkMerge [

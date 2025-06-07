@@ -71,6 +71,28 @@
   '(bookmark-save :wk "Save current bookmarks to bookmark file"))
 
  (my/leader-keys
+  "c"
+  '(:ignore t :wk "Code")
+  "c c"
+  '(eglot-code-actions :wk "Code actions")
+  "c e"
+  '(flymake-goto-next-error :wk "Go to next error")
+  "c E"
+  '(flymake-goto-prev-error :wk "Go to prev error")
+  "c h"
+  '(eldoc-box-help-at-point :wk "Show symbol documentation")
+  "c H"
+  '(eldoc-box-hover-mode :wk "Toggle documentation childframe")
+  "c i"
+  '(completion-at-point :wk "See completion list")
+  "c n"
+  '(eglot-rename :wk "Rename symbol")
+  "c r"
+  '(eglot-reconnect :wk "Restart language server")
+  "c s"
+  '(eglot :wk "Start language server"))
+
+ (my/leader-keys
   "d"
   '(:ignore t :wk "Dired")
   "d d"

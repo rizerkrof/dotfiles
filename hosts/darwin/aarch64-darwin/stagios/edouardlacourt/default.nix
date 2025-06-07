@@ -10,7 +10,6 @@
     dev.node.enable = true;
     dev.nix.enable = true;
     dev.python.enable = true;
-    dev.typescript.enable = true;
     services.docker.enable = true;
     services.colima.enable = true;
     editors.emacs = {
