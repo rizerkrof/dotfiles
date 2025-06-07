@@ -21,3 +21,5 @@
  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package reformatter)
+
+(setq-default tab-width 4)
