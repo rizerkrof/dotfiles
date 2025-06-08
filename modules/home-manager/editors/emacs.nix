@@ -121,6 +121,10 @@ in
             ];
         }
         {
+          configFilePath = "dev/debugger.el";
+          epkgs = epkgs: with epkgs; [ dap-mode ];
+        }
+        {
           configFilePath = "dev/langs/elisp.el";
           enable = config.modules.dev.python.enable; # Python needed for elisp-autofmt
           epkgs = epkgs: with epkgs; [ elisp-autofmt ];
