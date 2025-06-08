@@ -126,6 +126,11 @@ in
           epkgs = epkgs: with epkgs; [ elisp-autofmt ];
         }
         {
+          configFilePath = "dev/langs/go.el";
+          enable = config.modules.dev.go.enable; # Python needed for elisp-autofmt
+          epkgs = epkgs: with epkgs; [ go-mode ];
+        }
+        {
           configFilePath = "dev/langs/node.el";
           enable = config.modules.dev.node.enable;
         }
