@@ -17,6 +17,7 @@
      world)
     ("https://globalnews.ca/feed/" news world)
     ("https://globalnews.ca/environment/feed/" news climate world)
+    ("https://api.blast-info.fr/rss.xml" news climate world)
     ("https://www.france24.com/en/france/rss" news france)
     ("https://www.mediapart.fr/articles/feed" news france)
     ("https://www.ouest-france.fr/rss/france" news france)
