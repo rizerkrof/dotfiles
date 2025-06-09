@@ -20,3 +20,11 @@
  :hook
  ((js-ts-mode . prettier-format-on-save-mode)
   (tsx-ts-mode . prettier-format-on-save-mode)))
+
+(defun my-eglot-format-buffer ()
+  "Only format if not in JS/TS mode."
+  (unless (derived-mode-p
+           'js-mode 'typescript-mode 'tsx-ts-mode 'js-ts-mode)
+    (eglot-format-buffer)))
+
+(advice-add 'eglot-format-buffer :override #'my-eglot-format-buffer)
