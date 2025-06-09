@@ -23,3 +23,8 @@
 (use-package reformatter)
 
 (setq-default tab-width 4)
+
+(electric-pair-mode 1)
+(setq electric-pair-delete-adjacent-pairs t)
+(setq electric-pair-open-newline-between-pairs t)
+(setq electric-pair-pairs '((?\' . ?\') (?\` . ?\`) (?\{ . ?\})))
