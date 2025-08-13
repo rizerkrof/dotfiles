@@ -11,6 +11,7 @@ in {
   config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
+      ports = [ 2222 ];
       
       settings = {
         KbdInteractiveAuthentication = false;
