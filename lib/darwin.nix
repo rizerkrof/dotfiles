@@ -10,6 +10,12 @@ in
 {
   mkDarwinHost =
     hostDir: system:
+    let
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
     darwinSystem {
       inherit system lib;
       modules = [
@@ -20,7 +26,8 @@ in
         ../modules/default.nix
         ../modules/darwin/default.nix
         (mapHostUsers hostDir "Users")
-        (mapHostUsersHome hostDir ../modules/home-manager "Users" options)
-      ] ++ (mapModulesRec' ../modules/darwin import);
+        (mapHostUsersHome pkgs hostDir ../modules/home-manager "Users" options)
+      ]
+      ++ (mapModulesRec' ../modules/darwin import);
     };
 }

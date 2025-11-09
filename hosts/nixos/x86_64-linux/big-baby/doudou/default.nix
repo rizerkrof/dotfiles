@@ -8,6 +8,7 @@
       xmonad.enable = false;
       apps = {
         rofi.enable = true;
+        steam.enable = true;
       };
       terms = {
         kitty.enable = true;

@@ -1,4 +1,8 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  lib,
+  ...
+}:
 
 with lib;
 with lib.my;
@@ -6,19 +10,20 @@ let
   inherit (builtins) readDir;
 in
 {
-  mapHostUsersHome = hostDir: modulesDir: homeDir: options: {
+  mapHostUsersHome = pkgs: hostDir: modulesDir: homeDir: options: {
     home-manager.backupFileExtension = "backup";
     home-manager.sharedModules = [
       inputs.mac-app-util.homeManagerModules.default
     ];
     home-manager.extraSpecialArgs = {
-      inherit inputs;
+      inherit inputs pkgs;
     };
     home-manager.users = mapAttrs (user: v: {
       imports = [
         (hostDir + "/${user}/default.nix")
         options
-      ] ++ mapModulesRec' modulesDir import;
+      ]
+      ++ mapModulesRec' modulesDir import;
       home.username = user;
       home.homeDirectory = "/${homeDir}/${user}";
       programs.home-manager.enable = true;

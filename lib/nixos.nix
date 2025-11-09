@@ -51,7 +51,8 @@ in
         ../modules/nixos/default.nix
         (mapHostUsers hostDir "home")
         (mapNixosHostUsers hostDir "home")
-        (mapHostUsersHome hostDir ../modules/home-manager "home" ../modules/options.nix)
-      ] ++ (mapModulesRec' ../modules/nixos import);
+        (mapHostUsersHome pkgs hostDir ../modules/home-manager "home" ../modules/options.nix)
+      ]
+      ++ (mapModulesRec' ../modules/nixos import);
     };
 }
