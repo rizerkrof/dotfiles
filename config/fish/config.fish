@@ -14,6 +14,8 @@ if type -q eza
    alias tree 'exa --tree'
 end
 
+direnv hook fish | source
+
 if command -q zoxide
    zoxide init fish --cmd cd | source
 end
