@@ -19,7 +19,9 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      colima 
+      colima
+      docker
+      lazydocker
     ];
   };
 }
