@@ -131,8 +131,13 @@ in
         }
         {
           configFilePath = "dev/langs/go.el";
-          enable = config.modules.dev.go.enable; # Python needed for elisp-autofmt
+          enable = config.modules.dev.go.enable;
           epkgs = epkgs: with epkgs; [ go-mode ];
+        }
+        {
+          configFilePath = "dev/langs/python.el";
+          enable = config.modules.dev.python.enable;
+          epkgs = epkgs: with epkgs; [ python-mode ];
         }
         {
           configFilePath = "dev/langs/node.el";
