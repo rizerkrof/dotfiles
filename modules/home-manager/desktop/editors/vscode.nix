@@ -44,7 +44,7 @@ in
           };
         };
 
-        extensions = with pkgs.vscode-marketplace; [
+        extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
           vscodevim.vim
         ];
