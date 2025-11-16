@@ -11,7 +11,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    mac-app-util.url = "github:hraban/mac-app-util"; # used to show darwin programs in spotlight
+    mac-app-util = {
+      url = "github:hraban/mac-app-util"; # used to show darwin programs in spotlight
+      inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix"; # this fix issue https://github.com/hraban/mac-app-util/issues/39
+    };
   };
 
   outputs =
