@@ -28,3 +28,21 @@
 (setq electric-pair-delete-adjacent-pairs t)
 (setq electric-pair-open-newline-between-pairs t)
 (setq electric-pair-pairs '((?\' . ?\') (?\` . ?\`) (?\{ . ?\})))
+
+(use-package zone
+  :ensure nil ;; built-in package
+  :custom
+  (zone-programs [
+    zone-pgm-drip
+    zone-pgm-five-oclock-swan-dive
+    ;; zone-pgm-explode
+    ;; zone-pgm-paragraph-spaz
+    zone-pgm-putz-with-case
+    ;; zone-pgm-random-life
+    zone-pgm-rotate
+    ;; zone-pgm-stress
+    ;; zone-pgm-swirl
+    zone-pgm-whack-chars
+  ])
+  :config
+  (zone-when-idle 60))
