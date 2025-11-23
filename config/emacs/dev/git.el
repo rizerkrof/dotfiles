@@ -83,3 +83,20 @@
  :config
  (add-hook 'after-load-theme-hook #'my/magit-faces-patch)
  (my/magit-faces-patch))
+
+;; Use ESC to quit magit and transient (magit mini buffer)
+(with-eval-after-load 'magit
+  (define-key magit-mode-map [escape] 'magit-mode-bury-buffer))
+
+(with-eval-after-load 'transient
+  ;; Quit transient with ESC
+  (define-key transient-map [escape] 'transient-quit-one)
+  (define-key transient-map (kbd "ESC") 'transient-quit-one)
+
+  ;; Some menus use this map instead
+  (define-key transient-edit-map [escape] 'transient-quit-one)
+  (define-key transient-edit-map (kbd "ESC") 'transient-quit-one)
+
+  ;; Make ESC in transient children quit too
+  (define-key transient-sticky-map [escape] 'transient-quit-one)
+  (define-key transient-sticky-map (kbd "ESC") 'transient-quit-one))
