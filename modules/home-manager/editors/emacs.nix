@@ -150,6 +150,10 @@ in
           epkgs = epkgs: with epkgs; [ nix-mode ];
         }
         {
+          configFilePath = "dev/langs/yaml.el";
+          epkgs = epkgs: with epkgs; [ yaml-mode ];
+        }
+        {
           configFilePath = "dev/langs/org.el";
           enable = true;
           epkgs =
