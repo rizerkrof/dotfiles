@@ -28,3 +28,5 @@
   (lambda (frame) (toggle-nyan-for-windows))))
 
 (column-number-mode 1)
+
+(set-face-background 'mode-line (face-background 'mode-line-inactive))
