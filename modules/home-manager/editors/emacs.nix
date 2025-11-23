@@ -86,6 +86,7 @@ in
               dired-single
               dired-rainbow
               all-the-icons-dired
+              helm
             ];
         }
         {
