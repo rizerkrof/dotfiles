@@ -26,3 +26,5 @@
  (add-hook
   'window-size-change-functions
   (lambda (frame) (toggle-nyan-for-windows))))
+
+(column-number-mode 1)
