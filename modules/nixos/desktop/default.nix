@@ -55,7 +55,6 @@ in
       enableGhostscriptFonts = true;
       packages = with pkgs; [
         ubuntu-classic
-        dejavu_font
         symbola
       ];
     };
