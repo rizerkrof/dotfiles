@@ -28,6 +28,7 @@ in
 
     environment.systemPackages = with pkgs; [
       easyeffects
+      playerctl
     ];
 
     # HACK Prevents ~/.esd_auth files by disabling the esound protocol module
