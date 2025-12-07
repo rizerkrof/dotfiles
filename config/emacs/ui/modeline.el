@@ -4,6 +4,7 @@
  (setq
   doom-modeline-height 25
   doom-modeline-bar-width 5)
+
  :config (doom-modeline-mode 1))
 
 (use-package
@@ -29,4 +30,15 @@
 
 (column-number-mode 1)
 
-(set-face-background 'mode-line (face-background 'mode-line-inactive))
+(add-hook
+ 'after-init-hook
+ (lambda ()
+   (let ((line-color (face-foreground 'mode-line-inactive)))
+     (set-face-attribute 'mode-line nil
+                         :background "unspecified"
+                         :underline `(:color ,line-color :position t)
+                         :box nil)
+     (set-face-attribute 'mode-line-inactive nil
+                         :background "unspecified"
+                         :underline `(:color ,line-color :position t)
+                         :box nil))))
