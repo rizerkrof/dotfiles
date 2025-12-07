@@ -4,7 +4,7 @@ with builtins;
 with lib;
 {
   modules.desktop.terms.default = "kitty";
-  modules.desktop.xmonad.enable = true;
+  modules.desktop.i3.enable = true;
   modules.desktop.apps.steam.enable = true;
 
   networking.networkmanager.enable = true;

@@ -5,7 +5,7 @@
 
   modules = {
     desktop = {
-      xmonad.enable = false;
+      i3.enable = true;
       apps = {
         rofi.enable = true;
         steam.enable = true;

@@ -9,10 +9,10 @@
 with lib;
 with lib.my;
 let
-  cfg = config.modules.desktop.xmonad;
+  cfg = config.modules.desktop.i3;
 in
 {
-  options.modules.desktop.xmonad = {
+  options.modules.desktop.i3 = {
     enable = mkBoolOpt false;
   };
 
@@ -36,10 +36,7 @@ in
       };
       xserver = {
         enable = true;
-        windowManager.xmonad = {
-          enable = true;
-          enableContribAndExtras = true;
-        };
+        windowManager.i3.enable = true;
       };
     };
   };
