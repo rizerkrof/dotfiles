@@ -20,7 +20,10 @@
     ];
     initrd.kernelModules = [ ];
     extraModulePackages = [ ];
-    kernelModules = [ "kvm-amd" "rtw89_8922ae" ];
+    kernelModules = [
+      "kvm-intel"
+      "rtw89_8922ae"
+    ];
 
     # Refuse ICMP echo requests on my desktop/laptop; nobody has any business
     # pinging them, unlike my servers.
