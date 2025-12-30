@@ -10,6 +10,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    networking.firewall.allowedTCPPorts = [ 80 443 ];
+
     services.vaultwarden = {
       enable = true;
       config = {
@@ -18,6 +20,14 @@ in {
       };
     };
 
-    networking.firewall.allowedTCPPorts = [ 8000 ];
+    services.caddy = {
+      enable = true;
+      virtualHosts."lacourt.bzh".extraConfig = ''
+        handle /vault* {
+          uri strip_prefix /vault
+          reverse_proxy 127.0.0.1:8000
+        }
+      '';
+    };
   };
 }
