@@ -31,6 +31,7 @@ in
     nixosSystem {
       inherit system lib pkgs;
       specialArgs = {
+        themesDir = ../themes;
         inherit
           pkgs
           inputs

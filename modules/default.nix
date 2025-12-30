@@ -7,8 +7,4 @@
   environment.systemPackages = [
     pkgs.home-manager
   ];
-
-  stylix.enable = true;
-  stylix.image = ../wallpaper.png;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 }

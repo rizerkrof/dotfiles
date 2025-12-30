@@ -6,6 +6,7 @@ with lib;
   modules.desktop.terms.default = "kitty";
   modules.desktop.i3.enable = true;
   modules.desktop.apps.steam.enable = true;
+  modules.theme.night-session.enable = true;
 
   networking.networkmanager.enable = true;
   networking.extraHosts = ''
