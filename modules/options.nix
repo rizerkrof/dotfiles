@@ -24,12 +24,13 @@ with lib.my;
       binDir = mkOpt path "${config.dotfiles.dir}/bin";
       configDir = mkOpt path "${config.dotfiles.dir}/config";
       modulesDir = mkOpt path "${config.dotfiles.dir}/modules";
-      themesDir = mkOpt path "${config.dotfiles.modulesDir}/themes";
+      themesDir = mkOpt path "${config.dotfiles.dir}/themes";
     };
 
     home = {
       #file       = mkOpt' attrs {} "Files to place directly in $HOME";
       configFile = mkOpt' attrs { } "Files to place in $XDG_CONFIG_HOME";
+      themeFile = mkOpt' attrs { } "Files to place in .themes dir";
       dataFile = mkOpt' attrs { } "Files to place in $XDG_DATA_HOME";
     };
 
