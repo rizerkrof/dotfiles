@@ -5,8 +5,12 @@ with lib;
 {
   modules.services = {
     ssh.enable = true;
+    fail2ban.enable = true;
+    nextcloud.enable = true;
     vaultwarden.enable = true;
+    jellyfin.enable = true;
   };
+  modules.profiles.networks = [ "wg0" ];
 
   networking.networkmanager.enable = true;
   networking.extraHosts = ''
