@@ -34,6 +34,14 @@ in
           dns.override_local_dns = false;
           logtail.enabled = false;
         };
+        # setup 
+        # server: sudo headscale namespaces create home
+        # client: sudo tailscale up --login-server=https://${domain}
+        # server: sudo headscale nodes register --key <key> --user home
+
+        # tricks
+        # sudo headscale node list
+        # sudo headscale nodes rename -i <id> <new-name>
       };
 
       caddy = {
