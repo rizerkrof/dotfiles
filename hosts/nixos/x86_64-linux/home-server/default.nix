@@ -9,6 +9,7 @@ with lib;
     nextcloud.enable = true;
     vaultwarden.enable = true;
     jellyfin.enable = true;
+    headscale.enable = true;
   };
   modules.profiles.networks = [ "wg0" ];
 
