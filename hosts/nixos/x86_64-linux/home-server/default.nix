@@ -11,7 +11,10 @@ with lib;
     jellyfin.enable = true;
     headscale.enable = true;
   };
-  modules.profiles.networks = [ "wg0" ];
+  modules.profiles.networks = [
+    "wg0"
+    "tailscale"
+  ];
 
   networking.networkmanager.enable = true;
   networking.extraHosts = ''
