@@ -44,6 +44,7 @@ let
     STATUS=$(cat $BATTERY_PATH/status 2>/dev/null || echo "Unknown")
 
     if [ "$CAPACITY" -lt 10 ] && [ "$STATUS" != "Charging" ]; then
+      ${pkgs.i3}/bin/i3-msg 'fullscreen disable'
       ${pkgs.systemd}/bin/systemctl --user stop video-background 2>/dev/null || true
       if ! pgrep -f "conky.*battery-warning-conky.conf" > /dev/null; then
         ${pkgs.conky}/bin/conky -c ${conkyConfig} &
