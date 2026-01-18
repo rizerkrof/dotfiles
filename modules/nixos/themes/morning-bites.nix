@@ -44,6 +44,17 @@ in
         systemctl --user restart picom && echo "✓ picom restarted"
         echo "Theme reload complete!"
       '')
+      (pkgs.writeShellScriptBin "theme-min" ''
+        #!/usr/bin/env bash
+        set -e
+
+        echo "Setting minimal theme..."
+        # Reload wallpaper because stylix does not hot swap wallpaper
+        ${pkgs.feh}/bin/feh --bg-scale ${wallpaperPath} && echo "✓ wallpaper reloaded"
+        systemctl --user stop video-background && echo "✓ video-background stopped"
+        systemctl --user stop picom && echo "✓ picom stopped"
+        echo "Minimal theme complete!"
+      '')
     ];
 
     stylix = {
