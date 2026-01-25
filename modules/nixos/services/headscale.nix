@@ -11,6 +11,7 @@ with lib.my;
 let
   cfg = config.modules.services.headscale;
   domain = "lacourt.bzh";
+  serverIp = "100.64.0.3";
 in
 {
   options.modules.services.headscale = {
@@ -34,19 +35,49 @@ in
           dns.override_local_dns = false;
           dns.extra_records = [
             {
-              name = domain;
+              name = "home.${domain}";
               type = "A";
-              value = "100.64.0.3"; # IP of your server inside VPN
+              value = serverIp;
             }
             {
               name = "cloud.${domain}";
               type = "A";
-              value = "100.64.0.3"; # IP of your server inside VPN
+              value = serverIp;
             }
             {
               name = "vault.${domain}";
               type = "A";
-              value = "100.64.0.3"; # IP of your server inside VPN
+              value = serverIp;
+            }
+            {
+              name = "watch.${domain}";
+              type = "A";
+              value = serverIp;
+            }
+            {
+              name = "streaming.${domain}";
+              type = "A";
+              value = serverIp;
+            }
+            {
+              name = "radarr.${domain}";
+              type = "A";
+              value = serverIp;
+            }
+            {
+              name = "sonarr.${domain}";
+              type = "A";
+              value = serverIp;
+            }
+            {
+              name = "prowlarr.${domain}";
+              type = "A";
+              value = serverIp;
+            }
+            {
+              name = "torrent.${domain}";
+              type = "A";
+              value = serverIp;
             }
           ];
           logtail.enabled = false;
@@ -59,6 +90,16 @@ in
         # tricks
         # sudo headscale node list
         # sudo headscale nodes rename -i <id> <new-name>
+        
+        # exit node setup
+        # exit client: sudo tailscale set --advertise-exit-node
+        # server     : sudo headscale node list-routes
+        # server     : sudo headscale nodes approve-routes -i <id> -r 0.0.0.0/0
+        # user client: sudo tailscale set --exit-node <node-name>
+
+        # to quit exit node:
+        # sudo tailscale down 
+        # sudo tailscale up
       };
 
       caddy = {

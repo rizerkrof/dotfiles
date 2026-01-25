@@ -57,6 +57,36 @@ in {
       members = [ "qbittorrent" "radarr" "jellyseerr" ];
     };
 
+    services.caddy = {
+      enable = true;
+      virtualHosts = {
+        "watch.lacourt.bzh".extraConfig = ''
+          tls internal
+          reverse_proxy 127.0.0.1:5055
+        '';
+        "streaming.lacourt.bzh".extraConfig = ''
+          tls internal
+          reverse_proxy 127.0.0.1:8096
+        '';
+        "radarr.lacourt.bzh".extraConfig = ''
+          tls internal
+          reverse_proxy 127.0.0.1:7878
+        '';
+        "sonarr.lacourt.bzh".extraConfig = ''
+          tls internal
+          reverse_proxy 127.0.0.1:8989
+        '';
+        "prowlarr.lacourt.bzh".extraConfig = ''
+          tls internal
+          reverse_proxy 127.0.0.1:9696
+        '';
+        "torrent.lacourt.bzh".extraConfig = ''
+          tls internal
+          reverse_proxy 127.0.0.1:8080
+        '';
+      };
+    };
+
     systemd.tmpfiles.rules = [
       # Ensure the directory exists and is owned by the media group
       "d /var/lib/qBittorrent/qBittorrent/downloads 0775 qbittorrent media -"
