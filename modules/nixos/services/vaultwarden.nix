@@ -22,6 +22,10 @@ in {
 
     services.caddy = {
       enable = true;
+      virtualHosts."vault.lacourt.bzh".extraConfig = ''
+        tls internal
+        reverse_proxy 127.0.0.1:8000
+      '';
       virtualHosts."lacourt.bzh".extraConfig = ''
         handle /vault* {
           uri strip_prefix /vault
