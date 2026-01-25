@@ -1,5 +1,6 @@
 { lib, config, options, pkgs, ... }:
 
+
 with lib;
 with lib.my;
 let cfg = config.modules.services.nextcloud;
@@ -15,8 +16,8 @@ in {
 
     services.nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
-      hostName = "lacourt.bzh";  # base domain only, no /cloud
+      package = pkgs.nextcloud32;
+      hostName = "cloud.lacourt.bzh";  # base domain only, no /cloud
       config = {
         adminpassFile = "/etc/nextcloud-admin-pass";
         dbtype = "sqlite";
@@ -25,7 +26,7 @@ in {
       # Configure for reverse proxy
       settings = {
         trusted_proxies = [ "127.0.0.1" ];
-        overwritehost = "lacourt.bzh";
+        overwritehost = "cloud.lacourt.bzh";
         overwriteprotocol = "https";
       };
    };
@@ -44,14 +45,10 @@ in {
     
     # Caddy proxies to nginx
     services.caddy = {
-      virtualHosts."lacourt.bzh" = {
-        extraConfig = ''
-          handle /cloud* {
-            uri strip_prefix /cloud
-            reverse_proxy 127.0.0.1:8001
-          }
-        '';
-      };
+      virtualHosts."cloud.lacourt.bzh".extraConfig = ''
+        tls internal
+        reverse_proxy 127.0.0.1:8001
+      '';
     };
 
     networking.firewall.allowedTCPPorts = [ 80 443 ];

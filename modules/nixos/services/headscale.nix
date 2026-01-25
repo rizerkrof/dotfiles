@@ -39,6 +39,11 @@ in
               value = "100.64.0.3"; # IP of your server inside VPN
             }
             {
+              name = "cloud.${domain}";
+              type = "A";
+              value = "100.64.0.3"; # IP of your server inside VPN
+            }
+            {
               name = "vault.${domain}";
               type = "A";
               value = "100.64.0.3"; # IP of your server inside VPN
