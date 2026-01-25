@@ -34,6 +34,11 @@ in
           dns.override_local_dns = false;
           dns.extra_records = [
             {
+              name = domain;
+              type = "A";
+              value = "100.64.0.3"; # IP of your server inside VPN
+            }
+            {
               name = "vault.${domain}";
               type = "A";
               value = "100.64.0.3"; # IP of your server inside VPN
