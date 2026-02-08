@@ -26,12 +26,6 @@ in {
         tls internal
         reverse_proxy 127.0.0.1:8000
       '';
-      virtualHosts."lacourt.bzh".extraConfig = ''
-        handle /vault* {
-          uri strip_prefix /vault
-          reverse_proxy 127.0.0.1:8000
-        }
-      '';
     };
   };
 }
